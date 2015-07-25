@@ -1,8 +1,6 @@
 
 
-
-
-$(function(){
+function initTitleColor() {
 	$(".navbar-default .navbar-nav>li>a").bind("click", function(){
 		var links = $(".navbar-default .navbar-nav>li>a");
 		$.each(links, function(index, data){
@@ -14,4 +12,10 @@ $(function(){
 	});
 
 	$(".navbar-default .navbar-nav>li>.title-home").css("color", "#000");
+}
+
+$(function(){
+
+	initTitleColor();
+
 });
