@@ -20,7 +20,10 @@ body {
   font-size: 16px;
 }
 
-.hsqs-content {
+.hsqs-content .blog-content {
+  font-size: 24px;
+  color: #cfcfcf;
+  margin: 20px 30px;
 }
 
 
