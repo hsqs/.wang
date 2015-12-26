@@ -20,10 +20,34 @@ body {
   font-size: 16px;
 }
 
-.hsqs-content .blog-content {
-  font-size: 24px;
-  color: #cfcfcf;
-  margin: 20px 30px;
+.hsqs-content .index-body {
+  font-size: 32px;
+  color: #000;
+  margin: 50px 175px;
+}
+
+.hsqs-content li {
+  list-style-type: none;
+}
+
+.hsqs-content p , h2 {
+  margin: 20px 175px;
+  text-indent: 34px;
+}
+
+.hsqs-content p {
+  font-size: 17px;
+}
+
+.hsqs-content .blog {
+  text-decoration: none;
+  margin: 50px 175px;
+  font-size: 18px;
+}
+
+.hsqs-content .body-about {
+  margin: 20px 175px;
+  font-size: 18px;
 }
 
 
