@@ -1,3 +1,0 @@
-  <div class="hsqs-content">
-    <p class="blog-content">hello world</p>
-  </div>

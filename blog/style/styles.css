@@ -2,7 +2,7 @@
 body {
   font-family:Georgia, "Times New Roman", Times, serif;
   background-color: #cfcfcf;
-  background: url("../resource/doge.jpg") no-repeat top center;
+  /*background: url("../resource/doge.jpg") no-repeat top center;*/
   height: 100%;
   width: 100%;
   background-size: cover;
