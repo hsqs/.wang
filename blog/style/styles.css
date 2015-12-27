@@ -31,7 +31,10 @@ body {
 }
 
 .hsqs-content p , h2 {
-  margin: 20px 175px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  margin-left: 175px;
+  margin-right: 175px;
   text-indent: 34px;
 }
 
@@ -43,6 +46,15 @@ body {
   text-decoration: none;
   margin: 50px 175px;
   font-size: 18px;
+}
+
+code {
+  color: #000 ;
+}
+
+.hsqs-content .date {
+  margin-left: 20px;
+  font-size: 17px;
 }
 
 .hsqs-content .body-about {

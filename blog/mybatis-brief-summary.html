@@ -8,6 +8,7 @@
   <link rel="icon" href="resource/icon.png" type="image/gif" >
   <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style/styles.css">
+  <link rel="stylesheet" type="text/css" href="mybatis-brief-summary.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -32,13 +33,46 @@
 
   <div class="hsqs-content">
     <div>
-      <h2>Mybatis 使用技巧总结</h2>
+      <h2>Mybatis 使用技巧总结<span class="date">——2015-12-27</span></h2>
     </div>
     <div>
-      <p>这是<a href="http://mybatis.org/mybatis-3/zh/" target="_blank">中文官方文档</a>，基本的用法就不用多介绍了，下面说说自己使用时的心得吧。</p>
-      <p></p>
+      <p>这是<a href="http://mybatis.org/mybatis-3/zh/" target="_blank">中文官方文档</a>，前后一共用了大概1年时间，当时为了赶进度，只学了些基本的用法，
+      后来随着业务的复杂，SQL查询也越来越复杂，就积累了一些Mybatis的使用知识。Mybatis的基本用法和优点什么的就不用多介绍了，下面直接开始吧。</p>
+      <p>1、在使用 <code>foreach</code> 标签时，通常用于构建 <code>IN</code> 子查询或插入数据语句，构建 <code>IN</code> 语句的语法如下：</p>
+      <p><pre><code>&lt;foreach collection="list" index="index" item="m" open="(" separator="," close=")"&gt;  
+    #{m}
+&lt;/foreach&gt;</code></pre></p>
+      <p><code>foreach</code> 的各项参数就不用多解释了，这里，<code>open</code> 和 <code>close</code> 都显示的写到了foreach标签里。同理，
+      当构建插入多条数据的语句时，同样的语法，不过稍有点变化：</p>
+      <p><pre><code>&lt;foreach collection="list" index="index" item="m" separator=","&gt;  
+    <strong>(</strong>#{m.id}, #{m.name}<strong>)</strong>
+&lt;/foreach&gt;</code></pre></p>
+      <p>注意，<code>foreach</code> 里的语句是带了圆括号，去掉了<code>open</code> 和 <code>close</code> 属性，分隔符依旧是<code>,</code>，这是其
+      中一种对values后面SQL的一种分解方式，或者用下面这种：</p>
+      <p><pre><code>&lt;foreach collection="list" index="index" item="m" open="(" separator="),(" close=")"&gt;  
+    #{m.id}, #{m.name}
+&lt;/foreach&gt;</code></pre></p>
+      <p>这里唯一注意的是 <code>separator</code> 的变化，这两种插入数据时的写法，效果都是一致的。想到这里，<code>separator</code> 可以是多个字符，那可不可以是 <code>AND</code>、
+      <code>OR</code> 这样的分隔符呢？答案是肯定的，如此一来，<code>foreach</code> 可以构造多个重复条件的方法就灵活的多了。
+      </p>
+      <p>2、在传入多个参数到Mybatis的时候，如果是构建像上面的 <code>IN</code> 语句或插入多条数据，可以用 <code>List</code> 来达到目的。如果是多个不同类型的参数，
+      有的是 <code>String</code>，有的是<code>List</code> 的话，一般会用 <code>Map&lt;String, Object&gt;</code>，把Key作为参数名称，真正的参数放到Value中，
+      在mapper文件里通过<code>#{Key}</code>的方式可以取到参数。这种方法虽然是极好的，但每次都要构造一个Map，然后把参数再一个个put进去，确实麻烦。这里就可以使用注解，省去这一堆步骤。
+      </p>
+      <p><pre><code>public List&lt;String&gt; selectName(@Param("address")List&lt;Integer&gt; addrs, @Param("gender")char gds);</code></pre></p>
+      <p>调用的时候，只需要把相应的参数传进去即可，在mapper文件里，用 <code>@Param</code> 里的注解名称来取参数，例如这里的address和gender，和Map的取用方式一样，
+      <code>#{address}</code> 就可以拿到参数了。
+      </p>
+      <p>3、在mapper文件里写SQL时，每个SQL的id都要对应一个DAO中的接口名称，保证他们可以找到彼此，其实，对于比较简单的一两行的SQL，可以不用在mapper文件里写
+        配置，直接在Java代码里添加注解的方式来实现。
+      </p>
+      <p><pre><code>@Select("SELECT name FROM user WHERE province_id = #{address} AND gender = #{gender}")
+public List&lt;String&gt; selectName(@Param("address")Integer address, @Param("gender")char gender);</code></pre></p>
+      <p>除了<code>@Select</code> 注解，还有<code>@Insert</code>、<code>@Update</code>、<code>@Delete</code>，使用方法同上。这样SQL和Java代码放在一起，
+      查看起来非常的方便。这四个注解还有其他属性，不过我也没用过，就不作介绍了。</p>
     </div>
   </div>
+  
 
   <footer class="footer navbar-fixed-bottom">
       <p>Follow my weibo ID: <a href="http://weibo.com/iiws" target="_black">从热成狗到冻成汪</a></p>
