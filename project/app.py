@@ -1,10 +1,30 @@
-# -*- coding: utf-8 -*-
 
 from flask import Flask
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
+from flask import render_template
+import os
 
 app = Flask(__name__)
-app.config.from_pyfile('settings.py')
+app.config.from_pyfile('setting.py')
+
 pages = FlatPages(app)
 freezer = Freezer(app)
+
+
+@app.route('/')
+def home():
+    posts = [page for page in pages if 'date' in page.meta]
+    # sort pages
+    sorted_pages = sorted(posts) # , reverse=True, key=lambda page: page['date']
+    return render_template('index.html', pages=sorted_pages)
+
+
+@app.route('/<path:path>/')
+def page(path):
+    page_return = pages.get_or_404(path)
+    return render_template('page.html', page=page_return)
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5001))
+    app.run(port=port)
