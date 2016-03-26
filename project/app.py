@@ -14,10 +14,20 @@ freezer = Freezer(app)
 
 @app.route('/')
 def home():
+    return render_template('home.html')
+
+
+@app.route('/blog')
+def blog():
     posts = [page for page in pages if 'date' in page.meta]
     # sort pages
     sorted_pages = sorted(posts) # , reverse=True, key=lambda page: page['date']
     return render_template('index.html', pages=sorted_pages)
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
 @app.route('/<path:path>/')
