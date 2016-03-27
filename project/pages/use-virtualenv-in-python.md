@@ -4,7 +4,7 @@ date: 2016-03-27
 
 
 ### 1，理解virtualenv
-&emsp;&emsp;virtualenv从字面意思来理解的话，就是虚拟环境的意思，这个第一印象容易对我们产生误导，其实并不是虚拟环境，以我的理解是一个**独立**环境。什么意思呢？好比一台电脑上装好Python以后，可以把安装的Python拷贝到另一个目录，这样两个Python环境相互独立，互不影响，那有了多个Python环境，在什么时候启用谁禁用谁呢？virtualenv这个时候就派上用场了。官方对virtualenv的解释：[virtualenv is a tool to create isolated Python environments](https://virtualenv.pypa.io/).
+&emsp;&emsp;virtualenv从字面意思来理解的话，就是虚拟环境的意思，这个第一印象容易对我们产生误导，其实并不是虚拟环境，以我的理解是一个**独立**环境。什么意思呢？好比一台电脑上装好Python以后，可以把安装的Python拷贝到另一个目录(官方:其实并没有真正安装多个 Python 副本，但是它确实提供了一种巧妙的方式来让各项目环境保持独立)，这样两个Python环境相互独立，互不影响，那有了多个Python环境，在什么时候启用谁禁用谁呢？virtualenv这个时候就派上用场了。官方对virtualenv的解释：[virtualenv is a tool to create isolated Python environments](https://virtualenv.pypa.io/).
 
 
 
