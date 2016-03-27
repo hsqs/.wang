@@ -5,9 +5,9 @@
     box-sizing: border-box;
 }
 
-.box {
-    width: 900px;
-    margin: 40px auto;
+nav.navbar.navbar-default.navbar-fixed-top {
+    padding: 0px 100px;
+    background-color: #0099CC;
 }
 
 body {
@@ -19,11 +19,32 @@ body {
 nav ul, nav ul li {
   display: inline-block;
   list-style: none;
-  margin: 20px 10px;
+  margin: 10px 20px;
 }
 
 nav ul li a {
   text-decoration: none;
   font-weight: 400;
   text-transform: uppercase;
+  color: #fff;
 }
+
+nav ul li a:hover {
+    text-decoration: none;
+}
+
+.container ul li{
+    list-style-type: none;
+}
+
+.container {
+    padding-left: 41px;
+    position: relative;
+    top: 61px;
+}
+
+a.selected {
+    color: #333300;
+    font-weight: bold;
+}
+

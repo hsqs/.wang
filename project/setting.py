@@ -32,3 +32,7 @@ FREEZER_REMOVE_EXTRA_FILES = False
 FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite']
 FLATPAGES_ROOT = os.path.join(APP_DIR, 'pages')
 FLATPAGES_EXTENSION = ".md"
+
+# set to True, Frozen-Flask won’t show warnings if the MIME type returned from the
+# server doesn’t match the MIME type derived from the filename extension
+FREEZER_IGNORE_MIMETYPE_WARNINGS = True

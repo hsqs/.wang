@@ -21,8 +21,16 @@
 
   <div class="content" role="main">
     
-<h1>home</h1>
-<p>something about home</p>
+
+<h2>Posts</h2>
+
+<ul class="page-list">
+  
+      <li><a href="/some-usage-of-mybatis/">
+          Mybatis 使用小技巧总结
+      </a> - 2015-12-27</li>
+  
+</ul>
 
   </div>
 
