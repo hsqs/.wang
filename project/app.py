@@ -26,19 +26,15 @@ def blog():
 
 @app.route('/about')
 def about():
-    ret = make_response(render_template('about.html'))
-    ret.headers['Content-Type'] = 'text/html; charset=utf-8'
-    return ret
+    return render_template('about.html')
 
 
 @app.route('/<path:path>/')
 def page(path):
     page_return = pages.get_or_404(path)
-    resp = make_response(render_template('page.html', page=page_return))
-    resp.headers['Content-Type'] = 'text/html; charset=utf-8'
-    return resp
+    return render_template('page.html', page=page_return)
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5001))
+    port = int(os.environ.get('PORT', 5002))
     app.run(port=port)
