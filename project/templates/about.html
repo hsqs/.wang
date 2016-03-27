@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>about</h1>
-<p>something about the page</p>
+<h1>{{ page.titles }}</h1>
+<p>{{ page.dates }}</p>
+
+{{page}}
 {% endblock %}

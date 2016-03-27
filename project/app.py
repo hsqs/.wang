@@ -20,13 +20,14 @@ def home():
 def blog():
     posts = [page for page in pages if 'date' in page.meta]
     # sort pages
-    sorted_pages = sorted(posts)  # , reverse=True, key=lambda page: page['date']
+    sorted_pages = sorted(posts, reverse=True, key=lambda page: page['date'])
     return render_template('index.html', pages=sorted_pages)
 
 
 @app.route('/about/')
 def about():
-    return render_template('about.html')
+    page_return = pages.get_or_404('about')
+    return render_template('about.html', page=page_return)
 
 
 @app.route('/blog/<path:path>/')
