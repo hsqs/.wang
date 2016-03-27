@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="774c57c4-6d55-46f4-869d-023bf03a7bdb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project/pages/use-virtualenv-in-python.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/about/index.html" afterPath="$PROJECT_DIR$/about/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/index.html" afterPath="$PROJECT_DIR$/blog/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/pages/about.md" afterPath="$PROJECT_DIR$/project/pages/about.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/some-usage-of-mybatis/index.html" afterPath="$PROJECT_DIR$/blog/some-usage-of-mybatis/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/use-virtualenv-in-python/index.html" afterPath="$PROJECT_DIR$/blog/use-virtualenv-in-python/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/static/css/style.css" afterPath="$PROJECT_DIR$/project/static/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/templates/index.html" afterPath="$PROJECT_DIR$/project/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/templates/base.html" afterPath="$PROJECT_DIR$/project/templates/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
     </list>
     <ignored path="sheng.wang.iws" />
@@ -40,6 +40,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/templates/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.434783">
+              <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="use-virtualenv-in-python.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/pages/use-virtualenv-in-python.md">
           <provider selected="true" editor-type-id="text-editor">
@@ -53,8 +63,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.93927896">
-              <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+            <state vertical-scroll-proportion="1.053131">
+              <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -103,16 +113,16 @@
         <option value="$PROJECT_DIR$/project/pages/test1.md" />
         <option value="$PROJECT_DIR$/project/templates/page.html" />
         <option value="$PROJECT_DIR$/project/static/css/blog.css" />
-        <option value="$PROJECT_DIR$/project/templates/base.html" />
         <option value="$PROJECT_DIR$/project/setting.py" />
         <option value="$PROJECT_DIR$/project/app.py" />
         <option value="$PROJECT_DIR$/project/templates/about.html" />
         <option value="$PROJECT_DIR$/project/pages/some-usage-of-mybatis.md" />
         <option value="$PROJECT_DIR$/project/templates/home.html" />
         <option value="$PROJECT_DIR$/project/pages/use-virtualenv-in-python.md" />
-        <option value="$PROJECT_DIR$/project/static/css/style.css" />
         <option value="$PROJECT_DIR$/project/templates/index.html" />
         <option value="$PROJECT_DIR$/project/pages/about.md" />
+        <option value="$PROJECT_DIR$/project/templates/base.html" />
+        <option value="$PROJECT_DIR$/project/static/css/style.css" />
       </list>
     </option>
   </component>
@@ -777,14 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67261904">
-          <caret line="26" column="72" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/templates/about.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08928572">
@@ -825,10 +827,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/project/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.434783">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/project/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.93927896">
-          <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+        <state vertical-scroll-proportion="1.053131">
+          <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
           <folding />
         </state>
       </provider>

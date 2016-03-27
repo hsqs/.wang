@@ -52,3 +52,7 @@ a.selected {
 .page-list li a {
     font-size: 18px;
 }
+
+p{
+    text-align: justify;
+}
