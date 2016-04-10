@@ -37,5 +37,5 @@ def page(path):
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5002))
+    port = int(os.environ.get('PORT', 5012))
     app.run(port=port)
