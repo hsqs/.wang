@@ -6,39 +6,18 @@ date: 2015-12-27
 ### 1、foreach-in
 &emsp;&emsp;在使用 foreach 标签时，通常用于构建 IN 子查询或插入数据语句，构建 IN 语句的语法如下：
 
-```
-<foreach collection="list" item="m" open="(" separator="," close=")">
-```
-```
-    #{m}
-```
-```
-</foreach>
-```
+    <foreach collection="list" item="m" open="(" separator="," close=")">
+        #{m}
+    </foreach>
 
 &emsp;&emsp;foreach 的各项参数就不用多解释了，这里，open 和 close 都显示的写到了foreach标签里。同理，当构建插入多条数据的语句时，同样的语法，不过稍有点变化：
-
-```
-<foreach collection="list" item="m" separator=",">
-```
-```
-(#{m.id}, #{m.name})
-```
-```
-</foreach>
-```
-
+    <foreach collection="list" item="m" separator=",">
+        (#{m.id}, #{m.name})
+    </foreach>
 &emsp;&emsp;注意，foreach 里的语句是带了圆括号，去掉了 open 和 close 属性，分隔符依旧是,，这是其中一种对 values 后面 SQL 的一种分解方式，或者用下面这种：
-
-```
-<foreach collection="list" item="m" open="(" separator="),(" close=")">
-```
-```
-    #{m.id}, #{m.name}
-```
-```
-</foreach>
-```
+    <foreach collection="list" item="m" open="(" separator="),(" close=")">
+        #{m.id}, #{m.name}
+    </foreach>
 
 &emsp;&emsp;这里唯一注意的是 separator 的变化，这两种插入数据时的写法，效果都是一致的。想到这里，separator 可以是多个字符，那可不可以是 AND、OR 这样的分隔符呢？答案是肯定的，如此一来，foreach 可以构造多个重复条件的方法就灵活的多了。
 
@@ -46,12 +25,9 @@ date: 2015-12-27
 ### 2、SQL 注解
 &emsp;&emsp;在mapper文件里写 SQL 时，每个 SQL 的 id 都要对应一个DAO中的接口名称，保证他们可以找到彼此，其实，对于比较简单的一两行的 SQL，可以不用在 mapper 文件里写配置，直接在Java代码里添加注解的方式来实现。这样做的好处是在调试的时候，可以不用再去找 xml 文件里的 SQL 代码。
 
-```
-@Select("SELECT name FROM user WHERE province_id = #{address} AND gender = #{gender}")
-```
-```
-public List<String> selectName(@Param("address")Integer address, @Param("gender")char gender);
-```
+    @Select("SELECT name FROM user WHERE province_id = #{address} AND gender = #{gender}")
+    public List<String> selectName(@Param("address")Integer address, @Param("gender")char gender);
+
 
 &emsp;&emsp;除了@Select 注解，还有@Insert、@Update、@Delete，使用方法同上。这样SQL和Java代码放在一起，
 查看起来非常的方便。这四个注解还有其他属性，不过我也没用过，就不作介绍了。
@@ -60,9 +36,7 @@ public List<String> selectName(@Param("address")Integer address, @Param("gender"
 ### 3、注解参数
 &emsp;&emsp;在传入多个参数到 Mybatis 的时候，如果是构建像上面的 IN 语句或插入多条数据，可以用 List 来达到目的。如果是多个不同类型的参数，有的是 String，有的是 List 的话，一般会用 Map<String, Object>，把 Key 作为参数名称，真正的参数放到 Value 中，在 mapper 文件里通过#{Key}的方式可以取到参数。这种方法虽然是极好的，但每次都要构造一个Map，然后把参数再一个个 put 进去，确实麻烦。这里就可以使用注解，省去这一堆步骤。同时，不用硬编码 SQL 里变量的引用和代码里的 key 值保持一致，这样调用接口传参数就可以了，调用者不用关心 SQL 里参数用的是哪个名字。
 
-```
-public List<String> selectName(@Param("address")List<Integer> addrs, @Param("gender")char gds);
-```
+    public List<String> selectName(@Param("address")List<Integer> addrs, @Param("gender")char gds);
 
 &emsp;&emsp;调用的时候，只需要把相应的参数传进去即可，在mapper文件里，用 @Param 里的注解名称来取参数，例如这里的address和gender，和Map的取用方式一样，#{address} 就可以拿到参数了。
 
