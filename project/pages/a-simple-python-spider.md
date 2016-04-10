@@ -2,6 +2,7 @@ title: 一个简单的 Python 爬虫
 date: 2016-04-10
 
 &emsp;&emsp;由于我经常逛微博，看到某些博主的图片都很好看（你懂的），就想干脆下载到本地，于是萌生了搞个爬虫的想法。之前听说 Python 网络爬虫，听起来高大上，在实践了后感觉也不是什么难事，现在来看自己实现的爬虫都很简单，以后要实现更复杂的爬虫的话，看了这篇博客和代码，能让自己也能快速的捡起来，进行二次开发。
+
 &emsp;&emsp;除了需要 Python 环境外，还需要安装 requests、BeautifulSoup4等。
 
     pip install requests BeautifulSoup4
