@@ -43,6 +43,7 @@ date: 2016-04-10
 
 
 &emsp;&emsp;完整的代码示例[点这里](https://github.com/hsqs/spiders/blob/master/weibo/weibo_miner.py)。
+
 &emsp;&emsp;顺便，贴一个 Python 爬虫常用技巧链接，以后或许可以用到，[点这里](http://my.oschina.net/jhao104/blog/647308?fromerr=KzH2VGaK)。
 
 
