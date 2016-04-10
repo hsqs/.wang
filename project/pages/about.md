@@ -10,6 +10,6 @@ dates: 2016-03-27
 
 &emsp;&emsp;直到有一天，我想，既然github-pages上可以上传网页，可不可以把Flask也一起上传什么的（haha我也是够了），结果发现这个干是不行滴。但是却发现了[Frozen-Flask](http://pythonhosted.org/Frozen-Flask/)这个么东东，可以将Flask的开发好的网页APP，转换为静态网页，上传到github-pages，voila~整个过程都有解决方案了，而且你只用注册一个域名。
 
-&emsp;&emsp;现在整个网站是 github-pages + Flask + Frozen-Flask + markdown + bootstrap 搭建起来的，可以将编写好的markdown转换为网页形式，目前来看，转换的不是很好，有些纯markdown预览的格式，经过这么一转换，样式并不会完全一致，如果将来有更好的方案，可能就不用这种方式了。
+&emsp;&emsp;现在整个网站是 github-pages + Flask + Frozen-Flask + markdown + bootstrap 搭建起来的，可以将编写好的markdown转换为网页形式，目前来看，转换的后呈现的样子和纯markdown的样式基本一致，但是如果将来有更好的方案，可能就不用这种方式了。
 
 &emsp;&emsp;那可能会问，github免费提供空间有限制吗？把别人提供的功能拿来搭建自己的网站道德吗？其实，[官方](https://pages.github.com/)有这样的说明，github-pages提供不受限制的空间，鼓励且允许你做任何事情，他们也并不会干涉。
