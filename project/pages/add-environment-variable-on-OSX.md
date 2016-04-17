@@ -1,0 +1,46 @@
+title: 在 OSX 上添加环境变量
+date: 2016-04-17
+
+&emsp;&emsp;在 Windows 上添加环境变量的操作都很熟悉了。但是在 OSX 上还是很生疏，上次在 OSX 上添加环境变量，还是在刚买笔记本，添加 Java 环境变量，当时添加完了，起作用后就没管了，今天又要添加 Scala 环境变量时，基本忘了怎么弄，现在把整个过程记下来。   
+
+
+&emsp;&emsp;OSX 上添加环境变量的第一个地方：
+
+	/etc/profile
+
+&emsp;&emsp;这是全局公有配置，不管哪个用户登录，都会读取该文件。所以不建议在这个文件里添加。
+
+&emsp;&emsp;第二个地方：  
+
+	/etc/bashrc
+
+&emsp;&emsp;也是全局公有配置，一般在里面添加系统级环境变量，执行 bash shell 时，会读取该文件。
+
+&emsp;&emsp;第三个地方，bash_profile：
+
+	~/.bash_profile
+
+&emsp;&emsp;如果该文件不存在，创建该文件即可，然后往里面写入环境变量值。当看到 bash_profile 这个文件时，突然想起当初配 Java 环境变量好像已经建好了这个文件，输入下面命令打开一看果然有 Java 的环境变量配置。配置过程如下。   
+&emsp;&emsp;输入如下命令后，按下 <kbd>i</kbd> 键，进入编辑模式：
+
+    vim ~/.bash_profile
+    
+&emsp;&emsp;添加环境变量对应的路径，例如，需要添加 Scala 环境变量路径，在文件最后写入：
+
+	export PATH="$PATH:/usr/local/scala-path/bin"
+   
+&emsp;&emsp;其中，scala-path 是从官网下载下来的解压后的文件夹，放在 /usr/local/目录下。完成后按 <kbd>esc</kbd> 键，进入普通模式，输入如下命令保存并退出：
+
+	:wq
+    
+&emsp;&emsp;此时重启终端，输入 Scala，就进入了 Scala 的命令模式。此时会输出类似如下信息：
+
+	Welcome to Scala 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0).
+	Type in expressions for evaluation. Or try :help.
+
+	
+&emsp;&emsp;如果要退出 Scala 命令模式，输入：
+
+	:q  或者  :quit
+
+&emsp;&emsp;整个过程还是很简单的。:)
