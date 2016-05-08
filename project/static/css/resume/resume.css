@@ -26,8 +26,13 @@
     width: 70%;
     float: right;
     height: 100%;
-    padding-top: 20px;
+    padding-top: 5px;
     border-bottom: 1px solid #444;
+}
+
+.left span{
+    opacity: 0.6;
+    font-weight: 300;
 }
 
 .head_portrait{
@@ -79,8 +84,12 @@
     float: left;
 }
 
+.phone_number .pn_right{
+    color: white;
+}
+
 .email{
-    height: 150px;
+    height: 86px;
     background-color: #5da4d9;
 }
 
@@ -90,8 +99,13 @@
     float: left;
 }
 
+.email .email_right{
+    color: white;
+    margin-top: 5px;
+}
+
 .address{
-    height: 150px;
+    height: 145px;
     background-color: #5da4d9;
 }
 
@@ -101,8 +115,12 @@
     float: left;
 }
 
+.address .address_right{
+    color: white;
+}
+
 .skills{
-    height: 150px;
+    height: 300px;
     background-color: #5da4d9;
 }
 
@@ -114,6 +132,29 @@
 
 .skills .skills_right{
     border-bottom: 0px;
+    color: white;
+}
+
+.skills .skill_progress{
+    width: 90%;
+    margin-top: 5px;
+    position: relative;
+    height: 2px;
+    background-color: #4783c2;
+    margin-bottom: 20px;
+}
+
+.skills .determinate{
+    position: absolute;
+    background-color: #fff;
+    height: 100%;
+}
+
+.skills .skill_circle{
+    color: white;
+    position: absolute;
+    top: -6px;
+    right: 0px;
 }
 
 

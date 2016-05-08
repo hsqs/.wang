@@ -16,7 +16,7 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/blogs')
+@app.route('/blogs/')
 def blog():
     posts = [page for page in pages if 'date' in page.meta]
     # sort pages
@@ -24,7 +24,7 @@ def blog():
     return render_template('index.html', pages=sorted_pages)
 
 
-@app.route('/about')
+@app.route('/about/')
 def about():
     page_return = pages.get_or_404('about')
     return render_template('about.html', page=page_return)
@@ -36,7 +36,7 @@ def resume():
     return render_template('resume.html', page=page_return)
 
 
-@app.route('/blogs/<path:path>')
+@app.route('/blogs/<path:path>/')
 def page(path):
     page_return = pages.get_or_404(path)
     return render_template('blog.html', page=page_return)
