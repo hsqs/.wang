@@ -2,3 +2,5 @@
 .idea/codeStyleSettings.xml
 
 .idea/workspace.xml
+
+*.pyc
