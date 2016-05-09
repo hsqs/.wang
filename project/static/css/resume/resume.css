@@ -12,6 +12,7 @@
     float: left;
     margin-top: 20px;
     margin-left: 30px;
+    color:#767270;
 }
 
 .i-custom-icon{
@@ -27,7 +28,7 @@
     float: right;
     height: 100%;
     padding-top: 5px;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #4783c2;
 }
 
 .left span{
@@ -69,10 +70,6 @@
     float: left;
 }
 
-.self_introduction .si_left .si_left_icon{
-    background-image: url('');
-}
-
 .phone_number{
     height: 150px;
     background-color: #5da4d9;
@@ -105,7 +102,7 @@
 }
 
 .address{
-    height: 145px;
+    height: 110px;
     background-color: #5da4d9;
 }
 
@@ -165,14 +162,13 @@
     text-align: center;
     font-size: 32px !important;
     color: gray;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .i-custom-right-body{
-    width: 70%;
+    width: 80%;
     float: right;
     height: 100%;
-    padding-top: 20px;
 }
 
 .work_experience{
@@ -181,19 +177,45 @@
 }
 
 .work_experience .work_experience_left{
-    width: 30%;
+    width: 20%;
     height: 100%;
     float: left;
 }
 
-.education{
-    height: 400px;
+.work_experience h3, .education h3, .language h3{
+    font-size: 20px;
+}
+
+.work_experience span, .education span, .language span{
+    font-size: 14px;
+}
+
+.work_experience p, .education p, .language p{
+    padding-right: 40px;
+    margin-bottom: 25px;
+    margin-top: 5px;
+    line-height: 17pt;
+}
+
+.work_experience .period_color, .education .period_color, .language .period_color   {
+    color: #5da4d9;
+    line-height: 15pt;
+    font-weight: 400;
+    margin-bottom:
+}
+
+.education, .language{
+    height: 200px;
     box-shadow: 0 0 8px #ddd;
     margin-top: 30px;
 }
 
-.education .education_left{
-    width: 30%;
+.education .education_left, .language .language_left{
+    width: 20%;
     height: 100%;
     float: left;
+}
+
+.language {
+    height: 150px;
 }
