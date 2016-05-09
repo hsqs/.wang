@@ -60,7 +60,7 @@
 }
 
 .self_introduction{
-    height: 200px;
+    height: 190px;
     background-color: #5da4d9;
 }
 
@@ -70,8 +70,15 @@
     float: left;
 }
 
+.si_right p{
+    color: white;
+    padding-right: 30px;
+    font-size: 10pt;
+    margin-top: 15px;
+}
+
 .phone_number{
-    height: 150px;
+    height: 210px;
     background-color: #5da4d9;
 }
 
