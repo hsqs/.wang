@@ -1,6 +1,6 @@
 title: 在 OS X 上使用 virtualenv
 date: 2016-03-27
-
+blog: virtualenv,Python
 
 
 ### 1，理解virtualenv

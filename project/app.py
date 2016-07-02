@@ -18,7 +18,15 @@ def home():
 
 @app.route('/blogs/')
 def blog():
-    posts = [page for page in pages if 'date' in page.meta]
+    posts = [page for page in pages if 'blog' in page.meta]
+    # sort pages
+    sorted_pages = sorted(posts, reverse=True, key=lambda page: page['date'])
+    return render_template('index.html', pages=sorted_pages)
+
+
+@app.route('/memo/')
+def memo():
+    posts = [page for page in pages if 'memo' in page.meta]
     # sort pages
     sorted_pages = sorted(posts, reverse=True, key=lambda page: page['date'])
     return render_template('index.html', pages=sorted_pages)
