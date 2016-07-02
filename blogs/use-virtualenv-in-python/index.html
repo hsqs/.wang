@@ -1,0 +1,71 @@
+
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>Welcome</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  
+<link rel="stylesheet" href="/static/css/blog.css">
+
+
+</head>
+<body class="box">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blogs/">Blog</a></li>
+        <li><a href="/memo/">Memo</a></li>
+        <li><a href="/about/">About</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+  <div class="content" role="main">
+    
+<h1>在 OS X 上使用 virtualenv</h1>
+<p>2016-03-27</p>
+<h3>1，理解virtualenv</h3>
+<p>&emsp;&emsp;virtualenv从字面意思来理解的话，就是虚拟环境的意思，这个第一印象容易对我们产生误导，其实并不是虚拟环境，以我的理解是一个<strong>独立</strong>环境。什么意思呢？好比一台电脑上装好Python以后，可以把安装的Python拷贝到另一个目录(官方:其实并没有真正安装多个 Python 副本，但是它确实提供了一种巧妙的方式来让各项目环境保持独立)，这样两个Python环境相互独立，互不影响，那有了多个Python环境，在什么时候启用谁禁用谁呢？virtualenv这个时候就派上用场了。官方对virtualenv的解释：<a href="https://virtualenv.pypa.io/">virtualenv is a tool to create isolated Python environments</a>.</p>
+<h3>2，安装virtualenv</h3>
+<p>&emsp;&emsp;安装就太简单了，使用pip安装即可：</p>
+<pre><code>pip install virtualenv
+</code></pre>
+<p>&emsp;&emsp;如果有权限问题，前面加一个sudo</p>
+<pre><code>sudo pip install virtualenv
+</code></pre>
+<h3>3，使用virtualenv</h3>
+<p>&emsp;&emsp;首先找到一个合适的空文件夹，在终端里输入如下命令，创建一个虚拟环境（Python已经安装到电脑上）：</p>
+<pre><code>virtualenv [-p python3] dir-name
+</code></pre>
+<p>&emsp;&emsp;如果电脑上安装了多个版本的Python，默认会使用OS X自带的2.7版本，如果想创建3.0以上的版本的话，指定版本参数即可。输入完成回车，可以到Finder里查看目录dir-name，里面有bin、include、lib三个目录。最后一步，继续在终端里输入如下命令，激活这个刚刚创建的环境：</p>
+<pre><code>source dir-name/bin/activate
+</code></pre>
+<p>&emsp;&emsp;这个时候，当前Python环境就激活了，终端也会有相应的变化，在最前面会出现当前环境的名字：</p>
+<pre><code>(dir-name)your-computer-name $:
+</code></pre>
+<p>&emsp;&emsp;hah，这个时候就可以使用了，比如在这个而环境里开发Flask应用，执行：</p>
+<pre><code>pip install Flask
+</code></pre>
+<p>&emsp;&emsp;此时，Flask会安装在dir-name里，而不会安装在其他环境，这样就达到了isolated的效果。如果不再使用当前环境，使用如下命令即可退出：</p>
+<pre><code>deactivate
+</code></pre>
+<h3>4，删除virtualenv</h3>
+<pre><code>rmvirtualenv env-name
+</code></pre>
+
+  </div>
+
+</div><!-- end container -->
+<div class="container" style="height:50px">
+
+</div>
+<script src="/static/js/script.js"></script>
+
+<script>
+
+</script>
+</body>
+</html>

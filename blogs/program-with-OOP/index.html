@@ -1,0 +1,151 @@
+
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>Welcome</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  
+<link rel="stylesheet" href="/static/css/blog.css">
+
+
+</head>
+<body class="box">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blogs/">Blog</a></li>
+        <li><a href="/memo/">Memo</a></li>
+        <li><a href="/about/">About</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+  <div class="content" role="main">
+    
+<h1>面向对象编程的一点心得</h1>
+<p>2016-07-02</p>
+<h3>1 初识</h3>
+<p>&emsp;&emsp;最早接触面向对象概念是在大一学习C++，课上，老师用了一学期时间，在讲解C++这门课知识的同时，想尽了各种比喻隐喻暗喻让我们理解面向对象。人的自然状态下更容易接受直观的东西，像蝉在叫车在跑，云是白色土是黑色，这些都很直观。当时学习理解面向对象很慢，只知道类、class、封装、继承、多态这些概念，这些概念听起来就抽象，理解起来当然是费劲。后续除了数据结构选修，再也没了软件方面的课程。 <br />
+&emsp;&emsp;到了大四开始找工作，学长送了我一本《程序员面试指南》开始临时抱佛脚，基本上把这本书过了一遍，收获还是挺大的，一次京东的笔试有个题问怎么理解面向对象的多态，我只写了一句话记得是：运行时父类可以指向子类的特性。现在看好像也没什么不对。</p>
+<h3>2 再接触</h3>
+<p>&emsp;&emsp;毕业去了第一家公司，做Java Web的项目，带我的老员工给了我一本《Java 编程思想》也没看懂多少就开始写代码。刚开始那段时间，当时写过的一个函数，记得大概是这样的：  </p>
+<pre><code>public &lt;T&gt; List&lt;T&gt; doSomeThing(List&lt;T extends BaseModel&gt; list)
+{
+    // ... ...
+}
+</code></pre>
+<p>&emsp;&emsp;项目里，BaseModel是父类，它有三个子类，我这里写了一个公共的方法，可以接收对应三个子类的列表参数，做一些公共的处理后返回。这个写法也是从网上搜来的，用起来也没什么问题，但其实并没有完全理解。这里可以看出来用到了继承和多态的知识，任何继承了BaseModel的类的列表都可以作为方法的合法参数。</p>
+<h3>3 最近一次使用</h3>
+<p>&emsp;&emsp;最近做一个项目，用JQuery的Datatable来展示表格，由于要把List结果转换成用字符串表示的二维数组形式，再返回给Ajax请求，这样js代码里做少量处理就可以展示出表格。由于我中途接手这个项目，把直接用+拼接十来个属性的代码提取出来，把Model类都添加一个form()方法，把拼接属性的方法放在里面（改用StringBuilder）：</p>
+<pre><code>public class ExampleModel {
+
+    private String name;
+    private int age;
+    private String birth;
+
+    private String wrap(Object obj) {
+        if (obj == null) {
+            return "";
+        }
+        return "\"" + obj.toString() + "\"";
+    }
+
+    private String wrapComma(Object obj) {
+        if (obj == null) {
+            return "";
+        }
+        return "\"" + obj.toString() + "\",";
+    }
+
+    public String form() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        sb.append(wrapComma(name));
+        sb.append(wrapComma(age));
+        sb.append(wap(birth));
+        sb.append("]");
+    }
+}
+</code></pre>
+<p>&emsp;&emsp;注意，wrapComma(Objet)比wrap(Object)多返回一个逗号，这两个方法是放在另外一个工具类里来调用，这里我放在一起方便阅读，最后form()方法的返回的一般格式就是：</p>
+<pre><code>["张三", "22", "1990-01-01"]
+</code></pre>
+<p>&emsp;&emsp;由于返回的是多行，所以用循环来完成，专门写一个工具方法来做转换：</p>
+<pre><code>public static String convertList2StringArray(List&lt;ExampleModel&gt; list) {
+    if (list == null || list.size() == 0) {
+        return "[[]]";
+    }
+
+    StringBuilder sb = new StringBuilder("[");
+    for (ExampleModel model : list) {
+        sb.append(model.form());
+        sb.append(",");
+    }
+
+    sb.replace(sb.length() - 1, sb.length(), "]");
+}
+</code></pre>
+<p>&emsp;&emsp;这样，返回的结果一般格式为二维数组字符串：</p>
+<pre><code>[["张三", "22", "1990-01-01"], ["张四", "23", "1990-01-02"]] 或者 [[]]
+</code></pre>
+<p>&emsp;&emsp;那么问题来了（不是挖掘机技术哪家强），项目里Model多如狗，一个表格就对应一个Model，这样做显然是不够，这个时候很自然的想到，多态就派上用场。当然我们不会使用父类，使用接口让Model重写特定的方法就行了。先定义一个接口：</p>
+<pre><code>public interface ICommonForm {
+    /**
+     * 返回描述Model特定的字符串形式
+     */
+    public String form();
+}
+</code></pre>
+<p>&emsp;&emsp;然后让对应要展示的Model都实现这个接口，例如上面的ExampleModel。</p>
+<pre><code>public class ExampleModel implements ICommonForm {
+
+    // 省略其他属性和方法
+
+    @Override
+    public String form() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        sb.append(wrapComma(name));
+        sb.append(wrapComma(age));
+        sb.append(wap(birth));
+        sb.append("]");
+    }
+}
+</code></pre>
+<p>&emsp;&emsp;最后，再修改下convertList2StringArray(List)方法，使之更为通用：</p>
+<pre><code>public static String convertList2StringArray(List&lt;? extends ICommonForm&gt; list) {
+    if (list == null || list.size() == 0) {
+        return "[[]]";
+    }
+
+    StringBuilder sb = new StringBuilder("[");
+    for (ICommonForm model : list) {
+        sb.append(model.form());
+        sb.append(",");
+    }
+
+    sb.replace(sb.length() - 1, sb.length(), "]");
+}
+</code></pre>
+<p>&emsp;&emsp;新的方法里，参数定义和for语句发生了变化，不再是特定的类，只要是实现了ICommonForm接口的类的列表，都是合法的参数，和前面提到的</p>
+<pre><code>public &lt;T&gt; List&lt;T&gt; doSomeThing(List&lt;T extends BaseModel&gt; list)
+</code></pre>
+<p>非常相似。 <br />
+&emsp;&emsp;设计模式里，很多模式都用到了多态，可以简化代码和结构。丫写了快两年Java代码，才终于能自然的、主动的想到用多态来解决问题……</p>
+
+  </div>
+
+</div><!-- end container -->
+<div class="container" style="height:50px">
+
+</div>
+<script src="/static/js/script.js"></script>
+
+<script>
+
+</script>
+</body>
+</html>
