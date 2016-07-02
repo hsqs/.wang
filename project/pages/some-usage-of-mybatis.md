@@ -1,4 +1,4 @@
-title: Mybatis 使用小技巧总结
+title: Mybatis 使用小技巧
 date: 2015-12-27
 blog: Mybatis
 

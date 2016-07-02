@@ -94,7 +94,7 @@ blog: OOP
             sb.append("[");
             sb.append(wrapComma(name));
             sb.append(wrapComma(age));
-            sb.append(wap(birth));
+            sb.append(wrap(birth));
             sb.append("]");
         }
     }
