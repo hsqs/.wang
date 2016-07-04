@@ -46,6 +46,8 @@ blog: OOP
             sb.append(wrapComma(age));
             sb.append(wap(birth));
             sb.append("]");
+            
+            return sb.toString();
         }
     }
     
@@ -67,6 +69,7 @@ blog: OOP
         }
     
         sb.replace(sb.length() - 1, sb.length(), "]");
+        return sb.toString();
     }
 
 &emsp;&emsp;这样，返回的结果一般格式为二维数组字符串：
@@ -96,6 +99,8 @@ blog: OOP
             sb.append(wrapComma(age));
             sb.append(wrap(birth));
             sb.append("]");
+            
+            return sb.toString();
         }
     }
 
@@ -113,6 +118,7 @@ blog: OOP
         }
     
         sb.replace(sb.length() - 1, sb.length(), "]");
+        return sb.toString();
     }
 
 &emsp;&emsp;新的方法里，参数定义和for语句发生了变化，不再是特定的类，只要是实现了ICommonForm接口的类的列表，都是合法的参数，和前面提到的
